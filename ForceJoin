@@ -1,0 +1,54 @@
+import requests,sys,webbrowser,time
+
+# ========= ADMIN SETTINGS ========= #
+
+GLOBAL = "on"          # on / off
+FORCE_JOIN = "on"
+
+ON_MSG  = "  ✅ 𝗔𝗖𝗖𝗘𝗦𝗦 𝗚𝗥𝗔𝗡𝗧𝗘𝗗 "
+OFF_MSG = " ❌ 𝗦𝗧𝗢𝗣𝗣𝗘𝗗 𝗕𝗬 𝗔𝗗𝗠𝗜𝗡 "
+
+CHANNEL_ID   = -1003878622191
+CHANNEL_LINK = "https://t.me/+2dTYtlpTdCMwZmRl"
+
+ADMIN_BOT = "YOUR_ADMIN_BOT_TOKEN"
+
+# ========= GLOBAL STOP ========= #
+
+if GLOBAL != "on":
+    print(OFF_MSG)
+    webbrowser.open(CHANNEL_LINK)
+    sys.exit()
+
+print(ON_MSG)
+
+# ========= WAIT UNTIL USER ENTERS ID ========= #
+
+while "ID" not in globals():
+    time.sleep(0.3)
+
+user_id = globals()["ID"]
+
+# ========= FORCE JOIN ========= #
+
+if FORCE_JOIN == "on":
+
+    print("\n🔒 Join our channel to use this tool\n")
+    webbrowser.open(CHANNEL_LINK)
+
+    input("After joining press ENTER...")
+
+    try:
+        r = requests.get(
+            f"https://api.telegram.org/bot{ADMIN_BOT}/getChatMember",
+            params={"chat_id": CHANNEL_ID, "user_id": user_id}
+        ).json()
+
+        ok = r["ok"] and r["result"]["status"] in ["member","administrator","creator"]
+
+    except:
+        ok = False
+
+    if not ok:
+        print("❌ JOIN FIRST")
+        sys.exit()
