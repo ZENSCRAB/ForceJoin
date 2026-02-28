@@ -11,7 +11,7 @@ OFF_MSG = " ❌ 𝗦𝗧𝗢𝗣𝗣𝗘𝗗 𝗕𝗬 𝗔𝗗𝗠𝗜𝗡 "
 CHANNEL_ID   = -1003878622191
 CHANNEL_LINK = "https://t.me/+2dTYtlpTdCMwZmRl"
 
-ADMIN_BOT = "YOUR_ADMIN_BOT_TOKEN"
+ADMIN_BOT = "7794472674:AAEwhIXqy4zpjn9sVEIjI0FS-cDakHrwq7g"
 
 # ========= GLOBAL STOP ========= #
 
